@@ -1,15 +1,21 @@
 import Link from "next/link";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { BookOpen, Lightbulb, Wrench } from "lucide-react";
 
 export default function StaffDashboardPage() {
   return (
     <div className="flex flex-1 flex-col gap-6 p-4 md:p-8 pt-6">
-
       <div className="space-y-4">
         <h3 className="text-xl font-semibold tracking-tight">VA Resources</h3>
         <p className="text-muted-foreground text-sm">
-          Access important documentation, onboarding material, and helpful tools for your daily tasks.
+          Access important documentation, onboarding material, and helpful tools
+          for your daily tasks.
         </p>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

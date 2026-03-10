@@ -1,4 +1,4 @@
-import { BookOpen, CreditCard, ShieldCheck, Clock, Key, Star, Calendar, LucideIcon } from "lucide-react";
+import { BookOpen, CreditCard, ShieldCheck, FileText, CheckCircle, Clock, Key, LucideIcon, List, Users, Calendar, Mic, Plane, Mail, MessageSquare, ShoppingBag, Target, Shield, Heart, Zap, Coffee, Phone, PlaneTakeoff, Globe, Home, Pencil, Send, AlertTriangle, CreditCard as CardIcon } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ReactNode } from "react";
 
@@ -19,10 +19,38 @@ export interface DocGroup {
   items: DocCategory[];
 }
 
-export const sections: DocGroup[] = [
+export const onboardingSections: DocGroup[] = [
   {
     title: "ONBOARDING",
     items: [
+      {
+        id: "onboarding-vision",
+        label: "Vision & Mission",
+        icon: Globe,
+        sections: [
+          {
+            title: "Our Vision",
+            content: (
+              <div className="space-y-4 text-muted-foreground">
+                <p className="text-lg italic font-serif leading-relaxed text-foreground/80">
+                  "We imagine a world where running a business feels easier, so owners can focus on what they love and grow with confidence."
+                </p>
+                <p>What drives us every single day at TalentMucho is the commitment to simplify operations for business owners.</p>
+              </div>
+            )
+          },
+          {
+            title: "Our Mission",
+            content: (
+              <div className="space-y-4 text-muted-foreground">
+                <p className="text-lg italic font-serif leading-relaxed text-foreground/80">
+                  "Our mission is to make business owners' lives easier by providing support that simplifies operations and supports growth."
+                </p>
+              </div>
+            )
+          }
+        ]
+      },
       {
         id: "onboarding-setup",
         label: "Onboarding Setup",
@@ -33,10 +61,10 @@ export const sections: DocGroup[] = [
             content: (
               <div className="space-y-2 text-muted-foreground">
                 <p>
-                  Create your company email, format is <code className="bg-muted px-1.5 py-0.5 rounded text-foreground">yourname.avs@gmail.com</code> (example: <code className="bg-muted px-1.5 py-0.5 rounded text-foreground">juandelacruz.avs@gmail.com</code>).
+                  Create your company email, format is <code className="bg-muted px-1.5 py-0.5 rounded text-foreground">yourname.tm@gmail.com</code> (example: <code className="bg-muted px-1.5 py-0.5 rounded text-foreground">juandelacruz.tm@gmail.com</code>).
                 </p>
                 <div className="p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg">
-                  <p className="font-medium">This new email will be utilized for client and AVSPH communications. You are not allowed to use personal email.</p>
+                  <p className="font-medium">This new email will be utilized for client and TalentMucho communications. You are not allowed to use personal email.</p>
                 </div>
               </div>
             )
@@ -45,7 +73,7 @@ export const sections: DocGroup[] = [
             title: "2. Fill out Database",
             content: (
               <div className="space-y-4 text-muted-foreground">
-                <p>Please fill out the AVSPH VA Database, the information gathered is solely for agency purposes.</p>
+                <p>Please fill out the TalentMucho VA Database, the information gathered is solely for agency purposes.</p>
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSch8623fnUZMxeU3l1TU47Amxg70qnNbz_SmBYhc3jKssks-g/viewform"
                   target="_blank"
@@ -61,7 +89,8 @@ export const sections: DocGroup[] = [
             title: "3. Inform HR",
             content: (
               <div className="space-y-4 text-muted-foreground">
-                <p>Inform HR of your new email by sending an email to <a href="mailto:admin@advancedvirtualstaff.com" className="text-primary hover:underline">admin@advancedvirtualstaff.com</a></p>
+                <p>Inform HR of your new email by sending an email to <a href="mailto:admin@talentmucho.com" className="text-primary hover:underline">admin@talentmucho.com</a></p>
+
                 <div className="bg-muted/50 p-4 rounded-lg border font-mono text-sm space-y-4 text-foreground relative">
                   <div>
                     <span className="font-semibold text-muted-foreground">Subject:</span> New VA Email
@@ -82,22 +111,12 @@ export const sections: DocGroup[] = [
           {
             title: "4. Client Kick-off & Hand-off",
             content: (
-              <div className="space-y-4 text-muted-foreground">
-                <p>After completing the above steps, HR will coordinate your client introduction and onboarding call.</p>
-                <div className="space-y-3">
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-1">Introduction</p>
-                    <p className="text-sm">HR will introduce you to your client via email using your new AVS company email.</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-1">Kick-off Call</p>
-                    <p className="text-sm">A scheduled kick-off call will be arranged between you and your client to align on expectations, tools, and workflows.</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-1">First Week Expectations</p>
-                    <p className="text-sm">Be ready to ask questions, take notes, and communicate any blockers to HR during your first 5 days.</p>
-                  </div>
-                </div>
+              <div className="space-y-4 text-muted-foreground mt-4 p-4 border border-dashed rounded-lg bg-muted/20">
+                <ul className="list-disc pl-5 space-y-2 text-foreground/80">
+                  <li><strong>Introduction:</strong> How to initiate the first communication with your client.</li>
+                  <li><strong>Scheduling:</strong> Arranging the initial kick-off call.</li>
+                  <li><strong>First Week Expectations:</strong> What to prepare for in your first 5 days.</li>
+                </ul>
               </div>
             )
           }
@@ -105,82 +124,57 @@ export const sections: DocGroup[] = [
       }
     ]
   },
-  {
+    {
     title: "GETTING STARTED",
     items: [
       {
-        id: "vision",
-        label: "Vision & Mission",
-        icon: Star,
-        sections: [
-          {
-            title: "Our Vision",
-            content: (
-              <div className="space-y-2 text-muted-foreground">
-                <p className="text-base italic text-foreground leading-relaxed">
-                  "We imagine a world where running a business feels easier, so owners can focus on what they love and grow with confidence."
-                </p>
-              </div>
-            )
-          },
-          {
-            title: "Our Mission",
-            content: (
-              <div className="space-y-2 text-muted-foreground">
-                <p className="text-base italic text-foreground leading-relaxed">
-                  "Our mission is to make business owners' lives easier by providing support that simplifies operations and supports growth."
-                </p>
-              </div>
-            )
-          },
-          {
-            title: "Our Core Belief",
-            content: (
-              <div className="space-y-4 text-muted-foreground">
-                <p className="text-lg font-bold text-foreground">Enabling Business Growth</p>
-                <p>
-                  As a VA under AVSPH, you are directly contributing to this belief every day. Every task you complete, every call you handle, every client you support — you are helping a business owner focus on what matters most to them.
-                </p>
-              </div>
-            )
-          }
-        ]
-      },
-      {
         id: "getting-started",
-        label: "Operations Guide",
+        label: "Getting Started",
         icon: BookOpen,
         sections: [
           {
             title: "Tools & Work Setup",
             content: (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-2">🖥️ Hardware</p>
-                    <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 border rounded-lg bg-primary/5">
+                    <p className="font-semibold text-primary mb-2 flex items-center gap-2">
+                       <Home className="w-4 h-4" /> Hardware
+                    </p>
+                    <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                       <li>Desktop or laptop with reliable specifications</li>
                       <li>USB noise-cancelling headset with microphone</li>
                     </ul>
                   </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-2">📶 Internet</p>
-                    <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
+                  <div className="p-4 border rounded-lg bg-primary/5">
+                    <p className="font-semibold text-primary mb-2 flex items-center gap-2">
+                       <Zap className="w-4 h-4" /> Internet
+                    </p>
+                    <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                       <li>Minimum 20 Mbps stable connection</li>
-                      <li>Always have a backup internet connection ready</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-2">🏢 Workspace</p>
-                    <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
-                      <li>Quiet, professional work environment</li>
-                      <li>Free from background noise and distractions</li>
+                      <li>Always have a backup internet ready</li>
                     </ul>
                   </div>
                 </div>
-                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-yellow-700 dark:text-yellow-400">
-                  <p className="font-medium">Work Setup = Work Quality</p>
-                  <p className="text-sm mt-1">Your setup directly affects the quality of service you deliver to clients. Keep all equipment in good working condition at all times.</p>
+                <div className="p-4 border rounded-lg bg-primary/5">
+                  <p className="font-semibold text-primary mb-2 flex items-center gap-2">
+                     <Coffee className="w-4 h-4" /> Workspace
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                    <li>Quiet, professional work environment</li>
+                    <li>Free from background noise and distractions</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 border border-dashed rounded-lg bg-muted/20 text-muted-foreground">
+                  <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Clock className="w-4 h-4" /> Team Logger Setup
+                  </h4>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li>Download application as instructed by HR</li>
+                    <li>Log in using TalentMucho credentials</li>
+                    <li>Configure idle time and screenshot settings</li>
+                  </ul>
                 </div>
               </div>
             ),
@@ -189,25 +183,25 @@ export const sections: DocGroup[] = [
             title: "Work Hours & Schedule",
             content: (
               <div className="space-y-4">
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg text-center bg-muted/20">
-                    <p className="text-xl font-bold text-foreground">11PM – 9AM</p>
-                    <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wide">Typical Shift (PH Time)</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 text-center border rounded-lg bg-muted/30">
+                    <div className="text-2xl font-bold text-primary italic">11PM-9AM</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">Typical Shift (PH)</div>
                   </div>
-                  <div className="p-4 border rounded-lg text-center bg-muted/20">
-                    <p className="text-xl font-bold text-foreground">8 hrs</p>
-                    <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wide">Full-Time Daily Hours</p>
+                  <div className="p-4 text-center border rounded-lg bg-muted/30">
+                    <div className="text-2xl font-bold text-primary italic">8 hrs</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">Full-Time Daily</div>
                   </div>
-                  <div className="p-4 border rounded-lg text-center bg-muted/20">
-                    <p className="text-xl font-bold text-foreground">5 days</p>
-                    <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wide">Per Week</p>
+                  <div className="p-4 text-center border rounded-lg bg-muted/30">
+                    <div className="text-2xl font-bold text-primary italic">5 days</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">Per Week</div>
                   </div>
                 </div>
                 <div className="space-y-2 text-muted-foreground">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Shift hours may vary per client — confirm your exact schedule during onboarding.</li>
-                    <li>Any changes to your schedule must be <strong className="text-foreground">mutually agreed upon</strong> and approved by AVS management.</li>
-                    <li>If you are assigned to a new client, a separate updated contract will be issued reflecting your new hours and rate.</li>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    <li>Shift hours vary per client — confirm exact schedule.</li>
+                    <li>Changes require mutual agreement and management approval.</li>
+                    <li>New client = new updated contract.</li>
                   </ul>
                 </div>
               </div>
@@ -216,238 +210,143 @@ export const sections: DocGroup[] = [
           {
             title: "Daily Operations & Reporting",
             content: (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-2">📲 Login / Logout</p>
-                    <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
-                      <li>Log IN at the start of your shift in the AVS WhatsApp group</li>
-                      <li>Log OUT at the end of your shift in the same group</li>
-                      <li>Use <strong className="text-foreground">Team Logger</strong> for time tracking unless your client has opted out</li>
+                  <div className="p-4 border rounded-lg">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                       <Phone className="w-4 h-4 text-primary" /> Login / Logout
+                    </h4>
+                    <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                      <li>Log IN in the WhatsApp group</li>
+                      <li>Log OUT at end of shift</li>
+                      <li>Use Team Logger for time tracking</li>
                     </ul>
                   </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-2">📧 EOD Submission</p>
-                    <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
-                      <li>Send to: <strong className="text-foreground">avsph.eod@gmail.com</strong></li>
-                      <li>Use your <strong className="text-foreground">AVS email address</strong></li>
-                      <li>Subject: <strong className="text-foreground">[Date]</strong> — in your client's time zone</li>
+                  <div className="p-4 border rounded-lg">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                       <Mail className="w-4 h-4 text-primary" /> EOD Submission
+                    </h4>
+                    <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                      <li>Send to: <code className="text-foreground">eod@talentmucho.com</code></li>
+                      <li>Subject: [Date] in client timezone</li>
                     </ul>
                   </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">📝 EOD Report Template</p>
-                  <div className="bg-foreground text-background rounded-lg p-5 font-mono text-sm leading-relaxed">
-                    <p className="text-muted-foreground/60 text-xs mb-2">// Subject Line</p>
-                    <p><span className="opacity-60">Subject:</span> [Date] — [Client Timezone]</p>
+
+                <div className="bg-muted/50 p-6 rounded-xl border border-border">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">EOD Report Template</h4>
+                  <div className="space-y-4 font-mono text-xs text-foreground leading-relaxed">
+                    <div className="text-primary/60 font-sans italic border-b pb-2 mb-2">// Subject Line</div>
+                    <div className="flex gap-2"><span className="text-muted-foreground w-16 shrink-0 underline decoration-muted/40">Subject:</span> [Date] — [Client TZ]</div>
                     <br />
-                    <p><span className="opacity-60">Logout Date:</span> [Enter date]</p>
-                    <p><span className="opacity-60">Username:</span> [Your Full Name]</p>
-                    <p><span className="opacity-60">Break:</span> [Enter duration]</p>
-                    <p><span className="opacity-60">Appointment Set:</span> [Yes/No + details]</p>
-                    <p><span className="opacity-60">Total Rendered Hours:</span> [e.g. 8 hours]</p>
+                    <div className="flex gap-2"><span className="text-muted-foreground w-16 shrink-0 underline decoration-muted/40">Logout:</span> [Date]</div>
+                    <div className="flex gap-2"><span className="text-muted-foreground w-16 shrink-0 underline decoration-muted/40">Name:</span> [Your Name]</div>
+                    <div className="flex gap-2"><span className="text-muted-foreground w-16 shrink-0 underline decoration-muted/40">Break:</span> [Duration]</div>
+                    <div className="flex gap-2"><span className="text-muted-foreground w-16 shrink-0 underline decoration-muted/40">Appt:</span> [Yes/No]</div>
+                    <div className="flex gap-2"><span className="text-muted-foreground w-16 shrink-0 underline decoration-muted/40">Hours:</span> [Rendered]</div>
                     <br />
-                    <p><span className="opacity-60">Tasks Completed:</span></p>
-                    <p className="pl-4 opacity-80">- [Task 1]</p>
-                    <p className="pl-4 opacity-80">- [Task 2]</p>
-                    <p className="pl-4 opacity-80">- [Task 3]</p>
-                    <br />
-                    <p><span className="opacity-60">Pending Tasks:</span></p>
-                    <p className="pl-4 opacity-80">- [Pending item]</p>
-                    <p className="mt-4 pt-4 border-t border-muted/20 italic opacity-50 text-xs">"Progress, not perfection. Every task counts."</p>
+                    <div>
+                      <div className="text-muted-foreground underline mb-1">Tasks Completed:</div>
+                      <div className="text-primary italic pl-4">- [Task 1]</div>
+                    </div>
                   </div>
                 </div>
+              </div>
+            )
+          },
+          {
+            title: "Emergency Contact Flow",
+            content: (
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 font-semibold">
+                      <MessageSquare className="w-4 h-4 text-primary" /> WhatsApp
+                    </div>
+                    <div className="space-y-4 border-l-2 border-primary/20 pl-4 py-1">
+                      <div>
+                        <div className="text-sm font-medium">Step 1 — DM HR</div>
+                        <p className="text-xs text-muted-foreground">Direct message HR (not in group).</p>
+                      </div>
+                      <div>
+                        <div className="text-sm font-medium">Step 2 — "Emergency" tag</div>
+                        <p className="text-xs text-muted-foreground">Start with "Emergency" for urgent items.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 font-semibold">
+                      <Target className="w-4 h-4 text-primary" /> Escalation
+                    </div>
+                    <div className="space-y-2 border-l-2 border-primary/20 pl-4 py-1 text-sm text-muted-foreground">
+                      <p>1. Immediate Supervisor</p>
+                      <p>2. HR via WhatsApp</p>
+                      <p>3. Operations Manager</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          },
+          {
+            title: "Meetings & Check-ins",
+            content: (
+              <div className="space-y-2">
+                <p className="font-semibold text-primary">ATTEND:</p>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>1-2 Team Meetings per quarter</li>
+                  <li>5-10 minute weekly Kumustahan with HR</li>
+                  <li>2 Kumustahan sessions must be attended before bi-monthly compensation is released</li>
+                </ul>
               </div>
             ),
           },
           {
-            title: "Communication Guidelines",
+            title: "Communication & Support",
             content: (
               <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">🗂️ Admin</p>
-                    <p className="text-sm font-semibold text-foreground">admin@advancedvirtualstaff.com</p>
-                    <p className="text-xs mt-1">Client issues and concerns</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">💰 Accounting</p>
-                    <p className="text-sm font-semibold text-foreground">admin@advancedvirtualstaff.com</p>
-                    <p className="text-xs mt-1">Anything financial related</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">👥 HR</p>
-                    <p className="text-sm font-semibold text-foreground">avsph.eod@gmail.com</p>
-                    <p className="text-xs mt-1">Contract, attendance, leave requests, and HR-related concerns</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">🚨 General / Urgent</p>
-                    <p className="text-sm font-semibold text-foreground">WhatsApp Group Chat</p>
-                    <p className="text-xs mt-1">Any urgent matters — notify directly in the group</p>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="font-semibold text-foreground">Communication Rules</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Respond within 1-2 hrs during your work schedule.</li>
+                  <li>Notify HR if late or offline. Through WhatsApp.</li>
+                  <li>Keep messages clear & professional.</li>
+                </ul>
+
+                <div className="p-4 border border-dashed rounded-lg bg-muted/20">
+                  <h4 className="font-semibold text-foreground mb-2">Escalation & Support Contacts</h4>
+                  <p className="italic mb-2">Note: Placeholder for specific contact information.</p>
                   <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li>Respond to all messages within <strong className="text-foreground">1–2 hours</strong> during your scheduled work hours.</li>
-                    <li>If you are late or going offline, notify HR via <strong className="text-foreground">direct WhatsApp message</strong> immediately.</li>
-                    <li>Always keep all messages clear, concise, and professional.</li>
+                    <li><strong className="text-foreground">Payroll Issues:</strong> [Payroll Email/Contact]</li>
+                    <li><strong className="text-foreground">Client Disputes/Issues:</strong> [Account Manager Contact]</li>
+                    <li><strong className="text-foreground">Technical Support:</strong> [IT Contact]</li>
                   </ul>
                 </div>
               </div>
             ),
           },
-          {
-            title: "Emergency Contact Flow",
-            content: (
-              <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <p className="font-semibold text-foreground">💬 How to Notify HR</p>
-                    <ol className="list-decimal pl-5 space-y-2 text-sm">
-                      <li><strong className="text-foreground">Message HR or your POC directly on WhatsApp</strong> — not in the group.</li>
-                      <li>For emergencies, start with the word <strong className="text-foreground">"Emergency"</strong> then share your name, situation, time, and location if relevant.</li>
-                    </ol>
-                    <div className="bg-foreground text-background rounded-lg p-4 font-mono text-xs leading-relaxed">
-                      <p className="opacity-50 mb-2">SAMPLE MESSAGE</p>
-                      <p>Hi [HR Name], this is [Your Full Name]. I want to inform you that I will be [late/absent] today due to [brief reason]. I will keep you updated. Thank you.</p>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <p className="font-semibold text-foreground">📞 Escalation Order</p>
-                    <ol className="list-decimal pl-5 space-y-3 text-sm">
-                      <li><strong className="text-foreground">Immediate Supervisor</strong> — Call or message directly.</li>
-                      <li><strong className="text-foreground">HR via WhatsApp</strong> — Use your onboarding contact number.</li>
-                      <li><strong className="text-foreground">No response in 10 minutes?</strong> — Contact the AVSPH Operations Manager.</li>
-                      <li><strong className="text-foreground">After the emergency</strong> — Send a formal email report within <strong className="text-foreground">48 hours</strong>.</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            ),
-          },
         ],
       },
-      {
-        id: "attendance",
-        label: "Attendance & Meetings",
-        icon: Calendar,
-        sections: [
-          {
-            title: "Attendance & Leave Policy",
-            content: (
-              <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {[
-                    { val: "5 days", lbl: "Paid Leaves / Year" },
-                    { val: "2 days", lbl: "Max Consecutive" },
-                    { val: "1 month", lbl: "Advance Notice" },
-                    { val: "1 year", lbl: "Active Service Required" },
-                  ].map((s) => (
-                    <div key={s.lbl} className="p-3 border rounded-lg text-center bg-muted/20">
-                      <p className="text-lg font-bold text-foreground">{s.val}</p>
-                      <p className="text-xs mt-1 uppercase tracking-wide">{s.lbl}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">✅ Eligibility</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>Full-time contractor: 8 hrs/day, 5 days/week</li>
-                      <li>Completed 1 full year of continuous active service</li>
-                      <li>Must file request at least 1 month in advance (except emergencies)</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">📝 How to File a Leave</p>
-                    <ol className="list-decimal pl-5 space-y-1 text-sm">
-                      <li>Send via <strong className="text-foreground">direct WhatsApp to HR</strong> — not the group chat.</li>
-                      <li>Use format: <strong className="text-foreground">[Your Name] – Leave Request</strong> with dates and reason.</li>
-                      <li>Attach proof if sick or emergency — supporting documents help approval.</li>
-                    </ol>
-                  </div>
-                </div>
-                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-yellow-700 dark:text-yellow-400 text-sm">
-                  <p className="font-semibold">⚠️ Year of Stay Reset</p>
-                  <p className="mt-1">If you are placed "On Pause" (no project, inactivity, or extended leave), that time does NOT count toward your Year of Stay. Example: 6 months active → 1 month pause → your 12-month count restarts from zero when you return.</p>
-                </div>
-              </div>
-            ),
-          },
-          {
-            title: "Meetings & Check-Ins",
-            content: (
-              <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-1">📅 Team Meetings</p>
-                    <p className="text-xs text-primary font-medium mb-2 uppercase tracking-wide">Quarterly</p>
-                    <p className="text-sm">1–2 team meetings held per quarter. Attendance is expected. These are opportunities to align with the team, share updates, and build connection.</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <p className="font-semibold text-foreground mb-1">🤝 Kumustahan</p>
-                    <p className="text-xs text-primary font-medium mb-2 uppercase tracking-wide">Weekly with HR</p>
-                    <p className="text-sm">A quick 5–10 minute weekly check-in with HR. This is a pulse check — how are you doing, any concerns, any blockers?</p>
-                  </div>
-                  <div className="p-4 border rounded-lg bg-primary/5 border-primary/20">
-                    <p className="font-semibold text-foreground mb-1">💳 Pay Requirement</p>
-                    <p className="text-xs text-primary font-medium mb-2 uppercase tracking-wide">Mandatory for Payout</p>
-                    <p className="text-sm"><strong className="text-foreground">2 Kumustahan sessions</strong> must be attended and completed before each bi-monthly compensation is released.</p>
-                  </div>
-                </div>
-              </div>
-            ),
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: "HR & POLICIES",
-    items: [
       {
         id: "policies",
         label: "Policies and Regulation",
         icon: ShieldCheck,
         sections: [
           {
-            title: "Confidentiality & Non-Disclosure",
+            title: "Confidentiality & NDA",
             content: (
               <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">🔒 What is Confidential?</p>
-                    <p className="text-sm mb-2">Any non-public business, marketing, or technical information belonging to AVSPH, its affiliates, or its clients — regardless of format.</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>Client data and contact details</li>
-                      <li>Business strategies and processes</li>
-                      <li>Internal documents and company records</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">✅ What is NOT Confidential?</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>Information that becomes public through <em>no fault of yours</em></li>
-                      <li>Information lawfully obtained from another independent source</li>
-                      <li>Information that must be disclosed by legal order</li>
-                    </ul>
+                <p className="text-sm">Protecting client and company information is a core legal obligation. This includes client data, business strategies, and internal documents.</p>
+                <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive flex items-start gap-3">
+                  <Shield className="w-5 h-5 mt-0.5 shrink-0" />
+                  <div className="text-sm">
+                    <strong>Legal Penalty:</strong> Breach of confidentiality can result in liquidated damages of up to <strong>₱500,000</strong>.
                   </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">📋 Your NDA Obligations</p>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li>Keep all information private during your contract and for <strong className="text-foreground">1 year after it ends</strong>.</li>
-                    <li>Use confidential information only for work under this Agreement.</li>
-                    <li>Immediately notify AVSPH of any unauthorized access to confidential information.</li>
-                    <li>Assist with any necessary legal action if required.</li>
-                    <li>Return or destroy all company materials after your contract is terminated.</li>
-                  </ul>
-                </div>
-                <div className="p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg text-sm">
-                  <p className="font-semibold">⚖️ Legal Penalty</p>
-                  <p className="mt-1">Breach of confidentiality can result in liquidated damages of up to <strong>₱500,000</strong>. Do not disclose or use confidential information without written consent from AVSPH.</p>
-                </div>
+                <ul className="list-disc pl-5 space-y-1 text-sm">
+                  <li>Return all files/documents upon contract termination.</li>
+                  <li>Do not use info for personal gain or for a third party.</li>
+                  <li>Exception: Info that becomes public through no fault of yours.</li>
+                </ul>
               </div>
             ),
           },
@@ -456,30 +355,51 @@ export const sections: DocGroup[] = [
             content: (
               <div className="space-y-4 text-muted-foreground">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">🚫 Non-Compete</p>
-                    <p className="text-xs text-primary font-medium mb-2 uppercase tracking-wide">During contract + 2 years after</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>You may NOT participate in ownership, management, or operation of any business similar to or competing with AVSPH.</li>
-                      <li>Includes employment, consultancy, or agency work with similar businesses.</li>
-                      <li>Applies to businesses of any current or former AVSPH client.</li>
+                  <div className="p-4 border rounded-lg">
+                    <h4 className="font-semibold text-foreground mb-1 flex items-center gap-2">
+                       <Target className="w-4 h-4" /> Non-Compete
+                    </h4>
+                    <p className="text-xs italic mb-2">During contract + 2 years after</p>
+                    <ul className="list-disc pl-4 space-y-1 text-xs">
+                      <li>No similar businesses to TalentMucho</li>
+                      <li>Applies to current/former client businesses</li>
                     </ul>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">🤝 Non-Solicitation</p>
-                    <p className="text-xs text-primary font-medium mb-2 uppercase tracking-wide">2 years after contract ends</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>You may NOT solicit or recruit any AVSPH employee, contractor, or agent.</li>
-                      <li>Cannot be done directly or indirectly, for your own benefit or another firm.</li>
+                  <div className="p-4 border rounded-lg">
+                    <h4 className="font-semibold text-foreground mb-1 flex items-center gap-2">
+                       <Users className="w-4 h-4" /> Non-Solicitation
+                    </h4>
+                    <p className="text-xs italic mb-2">2 years after contract ends</p>
+                    <ul className="list-disc pl-4 space-y-1 text-xs">
+                      <li>Do not recruit any TalentMucho staff/agents</li>
                     </ul>
                   </div>
                 </div>
-                <div className="p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg text-sm">
-                  <p className="font-semibold">⚖️ Financial Penalties</p>
-                  <ul className="list-disc pl-5 space-y-1 mt-2">
-                    <li>If an AVSPH staff is hired through you → Reimburse all training expenses or pay <strong>₱500,000</strong> in liquidated damages.</li>
-                    <li>If an AVSPH client transfers to you through your solicitation → Reimburse all expenses and lost profits for <strong>2 years</strong>.</li>
-                  </ul>
+                <div className="p-4 bg-muted/40 text-xs rounded-lg border border-dashed">
+                  <strong>Financial Penalties:</strong> TalentMucho staff hired through you → ₱500,000 damages. Client solicited away → reimburse 2 years of lost profits.
+                </div>
+              </div>
+            ),
+          },
+          {
+            title: "Restrictions (The Four Absolutes)",
+            content: (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    "Do NOT work for clients outside TalentMucho",
+                    "Do NOT engage with competitors",
+                    "Do NOT solicit or accept side jobs",
+                    "Do NOT receive direct client payments"
+                  ].map((text, i) => (
+                    <div key={i} className="p-3 border rounded-lg bg-destructive/[0.03] text-destructive flex items-center gap-2 text-xs font-medium">
+                      <CheckCircle className="w-4 h-4 shrink-0 opacity-50" />
+                      {text}
+                    </div>
+                  ))}
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border-l-4 border-primary">
+                  <p className="text-xs text-muted-foreground italic">"When you follow these guidelines, you protect yourself, your clients, and the entire team."</p>
                 </div>
               </div>
             ),
@@ -488,57 +408,19 @@ export const sections: DocGroup[] = [
             title: "Termination Guidelines",
             content: (
               <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">🤝 Voluntary Termination</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>Must provide at least <strong className="text-foreground">14 days written notice</strong> to AVSPH.</li>
-                      <li>Payment will be proportional to services rendered up to the termination date.</li>
-                      <li>Failure to complete 14 days of work after resignation = <strong className="text-destructive">final payout forfeited</strong>.</li>
-                    </ul>
-                    <div className="mt-3 p-3 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg text-sm">
-                      <strong>AWOL = No Final Pay.</strong> Going absent without official leave (AWOL) means you forfeit your final payment entirely.
-                    </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center p-3 border rounded-lg bg-background shadow-sm">
+                    <div className="text-sm font-semibold text-foreground">Voluntary Notice</div>
+                    <div className="text-sm font-bold text-primary italic">14 Days Required</div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">⚡ Involuntary Termination (Immediate)</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>Inducing AVSPH employees or clients to leave the company</li>
-                      <li>Acts of disloyalty or fraud against AVSPH</li>
-                      <li>False statements in your application documents</li>
-                      <li>Violating company rules, guidelines, or professional conduct</li>
-                      <li>Disclosing confidential information without consent</li>
-                      <li>Failing to return company property</li>
-                    </ul>
-                  </div>
+                  <p className="text-xs pl-1">Failure to complete notice = final payout forfeited. AWOL is grounds for immediate termination without pay.</p>
                 </div>
-              </div>
-            ),
-          },
-          {
-            title: "Restrictions & Compliance",
-            content: (
-              <div className="space-y-4 text-muted-foreground">
-                <p className="text-sm">Zero tolerance — violations may lead to immediate termination and liquidated damages.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {[
-                    { label: "Do NOT work for AVSPH clients outside the company", sub: "All client work must go through AVSPH only." },
-                    { label: "Do NOT engage with AVSPH competitors", sub: "No competitive work during your contract period." },
-                    { label: "Do NOT solicit or accept side jobs", sub: "No freelance work from clients or co-VAs." },
-                    { label: "Do NOT receive direct client payments", sub: "All payments must flow through AVSPH." },
-                  ].map((item) => (
-                    <div key={item.label} className="p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg text-sm">
-                      <p className="font-semibold">❌ {item.label}</p>
-                      <p className="text-xs mt-1 opacity-80">{item.sub}</p>
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">✅ Additional Rules</p>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li>You may not accept work from other companies during your contract without <strong className="text-foreground">written approval</strong> from AVSPH.</li>
-                    <li>Return all company property within <strong className="text-foreground">5 business days</strong> of contract termination or final payouts may be withheld.</li>
-                    <li>Follow all AVSPH rules, policies, and professional conduct standards at all times.</li>
+                <div className="p-4 border border-dashed rounded-lg bg-muted/20">
+                  <h4 className="font-semibold text-foreground mb-2 text-xs uppercase tracking-tighter italic">Involuntary (Immediate)</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-xs">
+                    <li>Inducing employees or clients to leave</li>
+                    <li>Acts of disloyalty or fraud</li>
+                    <li>Disclosing confidential information</li>
                   </ul>
                 </div>
               </div>
@@ -552,74 +434,99 @@ export const sections: DocGroup[] = [
         icon: CreditCard,
         sections: [
           {
-            title: "Compensation & Payment Schedule",
+            title: "Compensation & Bonuses",
             content: (
-              <div className="space-y-4 text-muted-foreground">
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 border rounded-lg text-center bg-muted/20">
-                    <p className="text-lg font-bold text-foreground">1st & 16th</p>
-                    <p className="text-xs mt-1 uppercase tracking-wide">Payment Dates (EST)</p>
-                  </div>
-                  <div className="p-3 border rounded-lg text-center bg-muted/20">
-                    <p className="text-lg font-bold text-foreground">Batch 4</p>
-                    <p className="text-xs mt-1 uppercase tracking-wide">Your Payment Batch</p>
-                  </div>
-                  <div className="p-3 border rounded-lg text-center bg-muted/20">
-                    <p className="text-lg font-bold text-foreground">+3 days</p>
-                    <p className="text-xs mt-1 uppercase tracking-wide">Max Grace Period</p>
-                  </div>
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">📅 Payment Schedule</p>
+              <div className="space-y-4 text-muted-foreground p-4 bg-muted/30 rounded-lg border">
+                <h3 className="text-lg font-medium text-foreground mb-2">General Terms</h3>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li><strong className="text-foreground">Rate:</strong> Depends on client agreement.</li>
+                  <li><strong className="text-foreground">Schedule:</strong> Bi-monthly payouts. Any delays will be communicated 3 days prior.</li>
+                  <li><strong className="text-foreground">Requirement:</strong> Invoice submission via email is required before each payout.</li>
+                </ul>
+
+                <div className="mt-4 p-4 border border-dashed rounded-lg bg-background">
+                  <h4 className="font-semibold text-foreground mb-2">Invoice Submission Instructions</h4>
+                  <p className="italic mb-2 text-sm">Note: Placeholder for invoicing procedure.</p>
                   <ul className="list-disc pl-5 space-y-2 text-sm">
-                    <li><strong className="text-foreground">Work from 1st–15th</strong> → Paid on the 1st of the following period.</li>
-                    <li><strong className="text-foreground">Work from 16th–30th/31st</strong> → Paid on the 16th of the following month.</li>
-                    <li>Payments are processed on <strong className="text-foreground">business days only</strong> — no transactions on weekends or holidays.</li>
-                    <li>Unforeseen delays: allow up to <strong className="text-foreground">3 additional business days</strong>. Extended delays will be communicated in advance.</li>
+                    <li><strong className="text-foreground">Where to send:</strong> billing@talentmucho.com</li>
+                    <li><strong className="text-foreground">Subject Line Format:</strong> Invoice - [Your Name] - [Cut-off Date]</li>
+                    <li><strong className="text-foreground">Cut-off Dates:</strong> 15th and 30th of the month.</li>
+                    <li><strong className="text-foreground">Template:</strong> Link to approved invoice template.</li>
                   </ul>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">🧾 Invoice Requirement</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="rounded-md border overflow-hidden">
-                      <Table>
-                        <TableHeader className="bg-muted/50">
-                          <TableRow>
-                            <TableHead className="font-semibold">Field</TableHead>
-                            <TableHead className="font-semibold">Details</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          <TableRow><TableCell className="font-medium">Where to send</TableCell><TableCell>billing@advancedvirtualstaff.com</TableCell></TableRow>
-                          <TableRow><TableCell className="font-medium">Subject Line</TableCell><TableCell>Invoice – [Your Name] – [Cut-off Date]</TableCell></TableRow>
-                          <TableRow><TableCell className="font-medium">Cut-off Dates</TableCell><TableCell>15th and 30th of the month</TableCell></TableRow>
-                        </TableBody>
-                      </Table>
-                    </div>
-                    <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-yellow-700 dark:text-yellow-400 text-sm">
-                      <strong>Invoice Required Before Payout.</strong> No invoice = no payment processing. AVSPH is NOT liable to pay if a client goes missing without notice in situations where you are at fault.
-                    </div>
+              </div>
+            ),
+          },
+          {
+            title: "Incentives After 1 Year",
+            content: (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { label: "Loyalty Bonus", value: "P10,000", desc: "Annual reward" },
+                  { label: "Quarterly Bonus", value: "P2,000", desc: "Every 3 months" },
+                  { label: "WiFi Allowance", value: "P1,000", desc: "Monthly subsidy" },
+                  { label: "Medical Reimbursement", value: "P5,000", desc: "Health support" },
+                  { label: "Year-End Bonus", value: "Bonus", desc: "Every December" }
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col p-4 bg-background border rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
+                    <span className="text-2xl font-bold text-primary mt-1">{item.value}</span>
+                    <span className="text-xs text-muted-foreground mt-2">{item.desc}</span>
                   </div>
+                ))}
+              </div>
+            ),
+          },
+          {
+            title: "Leave Entitlement",
+            content: (
+              <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex-1 p-4 border rounded-lg bg-primary/5 border-primary/20">
+                  <h4 className="font-semibold text-primary mb-2">Annual Allowance</h4>
+                  <p className="text-3xl font-bold">5 Days</p>
+                  <p className="text-sm text-muted-foreground mt-1">Paid sick/personal leaves</p>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">💱 Conversion Rate Policy</p>
-                  <div className="rounded-md border overflow-hidden">
-                    <Table>
-                      <TableHeader className="bg-muted/50">
-                        <TableRow>
-                          <TableHead className="font-semibold">Market FX Rate (USD → PHP)</TableHead>
-                          <TableHead className="font-semibold">AVSPH Applied Rate</TableHead>
-                          <TableHead className="font-semibold">Notes</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        <TableRow><TableCell>Lower than ₱56</TableCell><TableCell className="font-medium">₱53</TableCell><TableCell className="text-muted-foreground">Base rate</TableCell></TableRow>
-                        <TableRow><TableCell>Exactly ₱56</TableCell><TableCell className="font-medium">₱54</TableCell><TableCell className="text-muted-foreground">Mid rate</TableCell></TableRow>
-                        <TableRow><TableCell>Exactly ₱57</TableCell><TableCell className="font-medium">₱55</TableCell><TableCell className="text-muted-foreground">Upper rate</TableCell></TableRow>
-                      </TableBody>
-                    </Table>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2">Transaction fees and conversion rates vary across platforms (Wise, PayPal). These internal rates aim to provide a fair, balanced payout while maintaining company financial stability.</p>
+                <div className="flex-1 p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2">Rules</h4>
+                  <ul className="text-sm space-y-2 text-muted-foreground list-disc pl-4">
+                    <li>Max 2 days consecutively</li>
+                    <li>Must be filed 1 month in advance</li>
+                  </ul>
+                </div>
+              </div>
+            ),
+          },
+          {
+            title: "Conversion Rate Policy",
+            content: (
+              <div className="space-y-4">
+                <div className="rounded-md border overflow-hidden">
+                  <Table>
+                    <TableHeader className="bg-muted/50">
+                      <TableRow>
+                        <TableHead className="font-semibold">If Foreign Exchange Rate is</TableHead>
+                        <TableHead className="font-semibold text-right">Conversion Rate Used</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>Lower than ₱56</TableCell>
+                        <TableCell className="text-right font-bold text-primary">₱53</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>₱56</TableCell>
+                        <TableCell className="text-right font-bold text-primary">₱54</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>₱57</TableCell>
+                        <TableCell className="text-right font-bold text-primary">₱55</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+                <div className="p-3 bg-muted/40 rounded-lg text-xs flex items-center gap-2">
+                  <Clock className="w-4 h-4 opacity-50" />
+                  Rates are reviewed periodically based on market stability.
                 </div>
               </div>
             ),
@@ -627,68 +534,35 @@ export const sections: DocGroup[] = [
           {
             title: "Cash Advance Policy",
             content: (
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-6 text-muted-foreground">
+                <div className="p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900 rounded-xl text-amber-700 dark:text-amber-400">
+                  <div className="flex gap-2">
+                    <Zap className="w-5 h-5 shrink-0" />
+                    <div className="text-sm"><strong>Emergency only:</strong> Requests without proof will NOT be processed.</div>
+                  </div>
+                </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">✅ Eligibility</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>At least <strong className="text-foreground">6 months of tenure</strong> with your assigned client</li>
-                      <li>Maximum request: <strong className="text-foreground">50% of upcoming scheduled payment</strong></li>
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-foreground">Eligibility</h4>
+                    <ul className="list-disc pl-5 text-xs space-y-1">
+                      <li>Min. 6 months tenure</li>
+                      <li>Max. 50% of upcoming payment</li>
                     </ul>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">📋 Policy Rules</p>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>Strictly for <strong className="text-foreground">emergency cases only</strong></li>
-                      <li>Proof of emergency must be submitted</li>
-                      <li>Maximum: no more than 50% of upcoming payment</li>
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-foreground">Regulations</h4>
+                    <ul className="list-disc pl-5 text-xs space-y-1">
+                      <li>Genuine emergencies only</li>
+                      <li>Supporting documents required</li>
                     </ul>
                   </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-2">📝 How to Apply</p>
-                  <ol className="list-decimal pl-5 space-y-2 text-sm">
-                    <li>Submit request via email to your designated AVS email address. Clearly state the emergency and amount requested.</li>
-                    <li>Attach supporting proof documents — requests without documents will NOT be processed.</li>
-                    <li>Await management review — approval is not guaranteed and is subject to review.</li>
-                  </ol>
-                </div>
-                <div className="p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg text-sm">
-                  <strong>🚫 Misuse Warning:</strong> Misuse of the cash advance policy may result in disciplinary action, including termination.
-                </div>
+                
+                <p className="text-[10px] uppercase font-bold text-destructive">Misuse may result in termination.</p>
               </div>
-            ),
-          },
-          {
-            title: "Bonus & Benefits",
-            content: (
-              <div className="space-y-4 text-muted-foreground">
-                <p className="text-sm">All benefits become effective after completing <strong className="text-foreground">1 Year of Active Service</strong> with AVSPH.</p>
-                <div className="rounded-md border overflow-hidden">
-                  <Table>
-                    <TableHeader className="bg-muted/50">
-                      <TableRow>
-                        <TableHead className="font-semibold">Benefit</TableHead>
-                        <TableHead className="font-semibold">Amount</TableHead>
-                        <TableHead className="font-semibold">Conditions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow><TableCell className="font-medium">🏅 1st Year Loyalty Bonus</TableCell><TableCell className="font-bold text-primary">₱10,000</TableCell><TableCell>Granted after one (1) year of active service</TableCell></TableRow>
-                      <TableRow><TableCell className="font-medium">📊 Quarterly Bonus</TableCell><TableCell className="font-bold text-primary">₱2,000 / quarter</TableCell><TableCell>Payable after 1 year, quarterly thereafter</TableCell></TableRow>
-                      <TableRow><TableCell className="font-medium">📶 Monthly Wi-Fi Allowance</TableCell><TableCell className="font-bold text-primary">₱1,000 / month</TableCell><TableCell>Payable monthly after 1 year</TableCell></TableRow>
-                      <TableRow><TableCell className="font-medium">🏥 Medical Reimbursement</TableCell><TableCell className="font-bold text-primary">₱5,000</TableCell><TableCell>Payable upon submission of valid documents</TableCell></TableRow>
-                      <TableRow><TableCell className="font-medium">🎄 December Bonus</TableCell><TableCell>Discretionary</TableCell><TableCell>Based on company performance; paid annually in December</TableCell></TableRow>
-                      <TableRow><TableCell className="font-medium">🏖️ Paid Sick/Personal Leaves</TableCell><TableCell>5 days / year</TableCell><TableCell>Max 2 consecutive days; 1 month notice required</TableCell></TableRow>
-                    </TableBody>
-                  </Table>
-                </div>
-                <div className="p-3 bg-muted/30 border rounded-lg text-sm">
-                  <strong className="text-foreground">📌 Year of Stay Calculation:</strong> Based on accumulated active working hours, days, and months. Periods where you were "On Pause" (inactive, no project, extended leave) are excluded and cause your year count to reset upon return.
-                </div>
-              </div>
-            ),
-          },
+            )
+          }
         ]
       }
     ]
@@ -709,7 +583,7 @@ export const sections: DocGroup[] = [
                 <div className="bg-muted/30 p-4 rounded-lg border">
                   <h4 className="font-semibold text-foreground mb-2">How to Login:</h4>
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>Navigate to the AVS Dashboard Login Page.</li>
+                    <li>Navigate to the TalentMucho Dashboard Login Page.</li>
                     <li>Ensure the <strong className="text-foreground">Staff</strong> tab is selected at the top of the login form.</li>
                     <li>Enter the Email Address and temporary Password from the HR email.</li>
                     <li>Click <strong className="text-foreground">Sign In</strong>.</li>
@@ -771,5 +645,728 @@ export const sections: DocGroup[] = [
       }
     ]
   },
-
 ];
+
+export const homeSections: DocGroup[] = [
+  {
+    title: "GETTING STARTED",
+    items: [
+      {
+        id: "home-welcome",
+        label: "Welcome",
+        icon: Home,
+        sections: [
+          {
+            title: "Welcome to TalentMucho Documentation",
+            content: (
+              <div className="space-y-8 py-4">
+                <div className="space-y-4 text-center">
+                  <h2 className="text-4xl font-extrabold tracking-tight text-primary">TalentMucho Command Center</h2>
+                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Your complete guide to roles, responsibilities, and operating procedures within the TalentMucho ecosystem.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="p-6 border rounded-2xl bg-gradient-to-br from-primary/5 to-transparent hover:border-primary/30 transition-colors group">
+                    <BookOpen className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-lg font-bold mb-2">Onboarding</h3>
+                    <p className="text-sm text-muted-foreground mb-4">Master the foundational expectations and core responsibilities of a Virtual Assistant.</p>
+                    <div className="text-xs font-bold text-primary flex items-center gap-1">GO TO ONBOARDING <Zap className="h-3 w-3" /></div>
+                  </div>
+                  
+                  <div className="p-6 border rounded-2xl bg-gradient-to-br from-primary/5 to-transparent hover:border-primary/30 transition-colors group">
+                    <ShieldCheck className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-lg font-bold mb-2">Executive Assistance</h3>
+                    <p className="text-sm text-muted-foreground mb-4">Deep dive into the EA Playbook for managing high-level executives efficiently.</p>
+                    <div className="text-xs font-bold text-primary flex items-center gap-1">GO TO EA PLAYBOOK <Zap className="h-3 w-3" /></div>
+                  </div>
+
+                  <div className="p-6 border rounded-2xl bg-gradient-to-br from-primary/5 to-transparent hover:border-primary/30 transition-colors group">
+                    <Key className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-lg font-bold mb-2">Systems & Tools</h3>
+                    <p className="text-sm text-muted-foreground mb-4">Learn about the platforms and tools used to keep the operations running smoothly.</p>
+                    <div className="text-xs font-bold text-primary flex items-center gap-1">COMING SOON <Clock className="h-3 w-3" /></div>
+                  </div>
+                </div>
+
+                <div className="bg-muted/30 p-8 rounded-2xl border border-dashed text-center">
+                   <p className="text-muted-foreground italic">"Simplicity is the ultimate sophistication. Use these docs to master your craft."</p>
+                </div>
+              </div>
+            )
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "SOP PLAYBOOK",
+    items: [
+      {
+        id: "sop-intro",
+        label: "What is an SOP?",
+        icon: FileText,
+        sections: [
+          {
+            title: "Definition & Purpose",
+            content: (
+              <div className="space-y-4 text-muted-foreground">
+                <p>A Standard Operating Procedure (SOP) is a set of step-by-step instructions compiled by an organization to help workers carry out complex routine operations.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 border rounded-xl bg-card">
+                    <h4 className="font-bold text-foreground mb-2">Efficiency</h4>
+                    <p className="text-sm italic">Achieve efficiency, quality output and uniformity of performance.</p>
+                  </div>
+                  <div className="p-4 border rounded-xl bg-card">
+                    <h4 className="font-bold text-foreground mb-2">Redundancy</h4>
+                    <p className="text-sm italic">Ensure the business can run even if the primary person is away.</p>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "sop-writing",
+        label: "How to Write an SOP",
+        icon: Pencil,
+        sections: [
+          {
+            title: "The Step-by-Step Process",
+            content: (
+              <div className="space-y-6">
+                <div className="relative pl-8 border-l-2 border-primary/20 space-y-8">
+                  {[
+                    { title: "Identify the Task", desc: "Choose a recurring process that needs standardization." },
+                    { title: "Define the Goal", desc: "What should the outcome look like?" },
+                    { title: "List the Steps", desc: "Write down every single action required, no matter how small." },
+                    { title: "Add Visuals", desc: "Use screenshots or 'Loom' videos for clarity." },
+                    { title: "Test the SOP", desc: "Have someone else follow it to ensure it works." }
+                  ].map((step, i) => (
+                    <div key={i} className="relative">
+                      <div className="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background" />
+                      <h4 className="font-bold text-foreground">{step.title}</h4>
+                      <p className="text-sm text-muted-foreground">{step.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "sop-standards",
+        label: "Standards & Sections",
+        icon: BookOpen,
+        sections: [
+          {
+            title: "The 9 Essential Sections",
+            content: (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    "Title & Objective", "Scope", "Responsibilities",
+                    "Definitions", "Required Tools", "Step-by-Step Instructions",
+                    "Expected Results", "Troubleshooting", "Approval/Revision History"
+                  ].map((section, i) => (
+                    <div key={i} className="p-3 border rounded-lg bg-muted/20 text-xs font-medium">
+                      {i + 1}. {section}
+                    </div>
+                  ))}
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-dashed border-primary/30 mt-4">
+                  <p className="text-sm italic text-center">"If it's not documented, it's not a system. If it's not a system, it's not scalable."</p>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "sop-submission",
+        label: "Submission Guide",
+        icon: Send,
+        sections: [
+          {
+            title: "How to Submit your SOP",
+            content: (
+              <div className="space-y-4 text-muted-foreground">
+                <ol className="list-decimal pl-5 space-y-3">
+                  <li>Use the <strong>TalentMucho Master SOP Template</strong>.</li>
+                  <li>Ensure all 9 sections are completed properly.</li>
+                  <li>Submit via the <strong className="text-foreground">SOP Submission Portal</strong> in your dashboard.</li>
+                  <li>Notify your quality manager on WhatsApp once submitted.</li>
+                </ol>
+                <div className="mt-6 p-4 bg-destructive/5 text-destructive border border-destructive/20 rounded-lg">
+                  <h4 className="font-bold flex items-center gap-2 mb-1">
+                    <AlertTriangle className="w-4 h-4" /> Pre-Submit Checklist
+                  </h4>
+                  <ul className="text-xs list-disc pl-4 space-y-1">
+                    <li>Is the Loom video link accessible?</li>
+                    <li>Are screenshots high-resolution?</li>
+                    <li>Is the formatting clean and consistent?</li>
+                  </ul>
+                </div>
+              </div>
+            )
+          }
+        ]
+      }
+    ]
+  }
+];
+
+export const assistanceSections: DocGroup[] = [
+  {
+    title: "OPERATING GUIDE",
+    items: [
+      {
+        id: "ea-objective",
+        label: "Core Objective",
+        icon: Target,
+        sections: [
+          {
+            title: "EXECUTIVE ASSISTANT PLAYBOOK",
+            content: (
+              <div className="space-y-6">
+                <div className="bg-primary/5 border border-primary/20 p-6 rounded-xl text-center">
+                  <h2 className="text-3xl font-bold text-primary mb-2">EXECUTIVE ASSISTANT PLAYBOOK</h2>
+                  <p className="text-lg text-muted-foreground font-medium">Role Overview & Operating Guide</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-2">
+                    <Zap className="h-5 w-5 text-primary" />
+                    1. THE EA’S CORE OBJECTIVE
+                  </h3>
+                  <p className="text-lg leading-relaxed">Your job is to protect the CEO’s time, energy, and focus so they can prioritize revenue, leadership, and high-impact decisions.</p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div className="p-4 border rounded-lg bg-card shadow-sm">
+                      <h4 className="font-bold text-primary mb-2">Protect the CEO’s Time</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-sm">
+                        <li>Filter requests.</li>
+                        <li>Prioritize what truly matters.</li>
+                        <li>Say no (kindly) when needed.</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-card shadow-sm">
+                      <h4 className="font-bold text-primary mb-2">Calendar Efficiency</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-sm">
+                        <li>Clear, detailed, and organized.</li>
+                        <li>No missing information.</li>
+                        <li>No surprises.</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-card shadow-sm">
+                      <h4 className="font-bold text-primary mb-2">Clear Communication</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-sm">
+                        <li>Every email gets a response.</li>
+                        <li>Clear “Yes” or respectful “Not at this time.”</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-card shadow-sm">
+                      <h4 className="font-bold text-primary mb-2">Be Proactive</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-sm">
+                        <li>Anticipate needs.</li>
+                        <li>Think ahead (hour → day → week → quarter).</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 p-4 bg-muted/30 rounded-lg border border-dashed">
+                    <h4 className="font-bold mb-2 flex items-center gap-2">
+                      <CreditCard className="h-4 w-4 text-primary" />
+                      Prioritize Revenue
+                    </h4>
+                    <p className="text-sm">Health first. Client commitments next. Revenue-producing activities always take priority.</p>
+                  </div>
+
+                  <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                    <h4 className="font-bold mb-2 flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                      Capture Preferences
+                    </h4>
+                    <p className="text-sm italic">Ask once. Save it. Reference it. Never repeat unnecessary questions.</p>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-responsibilities",
+        label: "Responsibilities",
+        icon: List,
+        sections: [
+          {
+            title: "Key Responsibilities",
+            content: (
+              <div className="space-y-6">
+                <p className="text-lg">You are the buffer between chaos and clarity. You are responsible for:</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    "Email & Communication Filtering",
+                    "Calendar & Meeting Management",
+                    "Travel Planning",
+                    "Event & Speaking Coordination",
+                    "Inbox Processing",
+                    "Personal Appointments",
+                    "Networking Coordination",
+                    "Project Tracking",
+                    "Financial Monitoring",
+                    "Confidentiality",
+                    "Team Liaison Communication",
+                    "Problem Prevention"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 p-3 border rounded-md bg-background text-sm font-medium">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-cadence",
+        label: "Task Cadence",
+        icon: Clock,
+        sections: [
+          {
+            title: "3. TASK CADENCE (Daily / Weekly / Monthly)",
+            content: (
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-primary border-b pb-2">DAILY RESPONSIBILITIES</h3>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Coffee className="h-4 w-4" /> Morning (Start of Day)
+                      </h4>
+                      <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
+                        <li><strong>Review today’s calendar</strong> (every event). Ensure: Title, Location, Agenda, Contact info, Confirmed attendees.</li>
+                        <li><strong>Process CEO inbox</strong>. Goal: Inbox at 0 by 10 AM (and again by 5 PM).</li>
+                        <li>Process your inbox & review SMS (10 AM).</li>
+                        <li>Add all requests to your to-do list.</li>
+                        <li>Update Admin Meeting agenda & prepare for meetings.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Zap className="h-4 w-4" /> During the Day
+                      </h4>
+                      <ul className="list-disc pl-5 space-y-2 text-sm">
+                        <li>Schedule requested meetings & confirm engagements.</li>
+                        <li>Book travel & handle document signatures.</li>
+                        <li>Complete Slack/Voxer/SMS requests.</li>
+                        <li>Briefly review the calendar 6 weeks ahead.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                        <Clock className="h-4 w-4" /> End of Day (Sign Off)
+                      </h4>
+                      <ul className="list-disc pl-5 space-y-2 text-sm">
+                        <li>Inbox back to zero & address all open threads.</li>
+                        <li>Write notes on unfinished items.</li>
+                        <li>Prepare tomorrow’s to-do list & review SMS (4 PM).</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="p-5 border rounded-xl bg-muted/10">
+                    <h3 className="font-bold text-primary mb-3">WEEKLY RESPONSIBILITIES</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-sm">
+                      <li>Audit CEO calendar 6 weeks ahead.</li>
+                      <li>Review client programs & upcoming travel.</li>
+                      <li>Weekly meetings with CEO's spouse (calendar review).</li>
+                      <li><strong>On Fridays:</strong> Audit next week’s meetings thoroughly.</li>
+                    </ul>
+                  </div>
+                  <div className="p-5 border rounded-xl bg-muted/10">
+                    <h3 className="font-bold text-primary mb-3">MONTHLY / QUARTERLY</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-sm">
+                      <li><strong>Monthly:</strong> Review travel 2 months ahead & suspense reports.</li>
+                      <li><strong>Quarterly:</strong> Schedule Family Boardroom Meeting & spouse retreats.</li>
+                      <li><strong>Annual:</strong> Dentist appointments & recurring personal obligations.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-meetings",
+        label: "Admin Meetings",
+        icon: Users,
+        sections: [
+          {
+            title: "Admin Meeting Structure",
+            content: (
+              <div className="space-y-6">
+                <div className="flex flex-col md:flex-row gap-4 mb-6">
+                  <div className="flex-1 p-4 bg-primary/5 border border-primary/10 rounded-lg">
+                    <h4 className="font-bold text-primary mb-1">Frequency</h4>
+                    <p className="text-sm">4-6 weeks: Daily</p>
+                    <p className="text-sm">After 6 weeks: 3x/week</p>
+                    <p className="text-sm">After 3 months: Weekly</p>
+                  </div>
+                  <div className="flex-1 p-4 bg-primary/5 border border-primary/10 rounded-lg">
+                    <h4 className="font-bold text-primary mb-1">Title Format</h4>
+                    <code className="text-xs bg-background p-1 block border rounded mt-1">
+                      Admin Meeting – [Your Name] & CEO – [Date]
+                    </code>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-bold text-foreground">Agenda Structure (In Order):</h4>
+                  <ol className="list-decimal pl-5 space-y-3">
+                    <li className="text-sm"><strong>Meeting Action Items</strong> (from prior meetings)</li>
+                    <li className="text-sm"><strong>Calendar Review</strong> (screen shared)</li>
+                    <li className="text-sm"><strong>Follow-ups</strong> from Previous Meetings</li>
+                    <li className="text-sm"><strong>CEO Agenda</strong> (his priorities)</li>
+                    <li className="text-sm"><strong>Closing the Loop</strong> (completed tasks)</li>
+                    <li className="text-sm"><strong>Assistant Review</strong> (emails/opportunities)</li>
+                    <li className="text-sm"><strong>Projects</strong> (top priority first – 3 solution options)</li>
+                    <li className="text-sm"><strong>Questions for CEO</strong></li>
+                  </ol>
+                </div>
+
+                <div className="bg-muted/30 p-4 rounded-lg border">
+                  <h4 className="font-bold mb-2">How to Run the Meeting:</h4>
+                  <p className="text-sm text-muted-foreground italic mb-3">Screen share. Be concise. Summarize clearly. Take notes live. Ask questions.</p>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-calendar",
+        label: "Calendar Rules",
+        icon: Calendar,
+        sections: [
+          {
+            title: "Calendar Management",
+            content: (
+              <div className="space-y-8">
+                <div>
+                  <h4 className="text-xl font-bold text-primary border-b pb-2 mb-4">CEO’s Ideal Week</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-bold mb-2">Monday – Friday</h5>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        <li><strong>Mornings:</strong> Creative work + workouts</li>
+                        <li><strong>Lunch:</strong> 12:00 – 12:30</li>
+                        <li><strong>Afternoons:</strong> Meetings</li>
+                        <li><strong>Evenings:</strong> Family time</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-red-50/50 dark:bg-red-900/10 border-red-100 dark:border-red-900/30">
+                      <h5 className="font-bold text-red-600 dark:text-red-400 mb-2">Weekends</h5>
+                      <p className="text-sm italic">No business scheduled. Family time is non-negotiable.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-foreground">Scheduling Rules & Priority</h4>
+                    <div className="space-y-2">
+                       <p className="text-xs font-bold uppercase text-muted-foreground">Default Lengths:</p>
+                       <ul className="text-sm space-y-1">
+                          <li>15 min → Quick contact</li>
+                          <li>20 min → <strong>Standard/Default</strong></li>
+                          <li>55 min → Podcast/interview</li>
+                          <li>60 min → Masterclass</li>
+                       </ul>
+                    </div>
+                    <div className="space-y-2">
+                       <p className="text-xs font-bold uppercase text-muted-foreground">Priority Order:</p>
+                       <ol className="list-decimal pl-5 text-sm space-y-1">
+                          <li>Health (non-negotiable)</li>
+                          <li>Client commitments</li>
+                          <li>CEO requested meetings</li>
+                          <li>Team requests</li>
+                          <li>Outside requests</li>
+                       </ol>
+                    </div>
+                  </div>
+
+                  <div className="p-5 bg-primary/5 rounded-xl border border-primary/20 space-y-3">
+                    <h4 className="font-bold text-primary">Invite Requirements:</h4>
+                    <ul className="list-disc pl-5 text-sm space-y-1">
+                      <li>Clear subject/title</li>
+                      <li>Start/end time + correct timezone</li>
+                      <li>Precise Location & Phone number</li>
+                      <li><strong>Agenda (mandatory)</strong></li>
+                      <li>Guests added & correct color category</li>
+                    </ul>
+                    <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 rounded border border-red-100 dark:border-red-900/30">
+                      <p className="text-xs font-bold text-red-700 dark:text-red-400 flex items-center gap-1">
+                        <Zap className="h-3 w-3" /> SAME-DAY CHANGES
+                      </p>
+                      <p className="text-xs mt-1 italic">Must SMS CEO immediately.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-podcasts",
+        label: "Podcasts & Speaking",
+        icon: Mic,
+        sections: [
+          {
+            title: "Podcasts & Speaking Engagements",
+            content: (
+              <div className="space-y-6">
+                <div className="p-4 bg-muted/30 rounded-lg border">
+                  <h4 className="font-bold mb-3">Vetting Checklist:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["Reach", "Reviews", "Social Following", "Past Guests", "Prior Connection", "In-person available"].map((item, i) => (
+                      <span key={i} className="px-3 py-1 bg-background border rounded-full text-xs font-medium">{item}</span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h4 className="font-bold">Required Calendar Info:</h4>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                    <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Phone number</li>
+                    <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Apple Podcast link</li>
+                    <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Instagram + LinkedIn</li>
+                    <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-primary" /> Connection context</li>
+                  </ul>
+                </div>
+
+                <div className="mt-6 p-4 border rounded-lg bg-primary/5">
+                  <h4 className="font-bold text-primary mb-2 italic">After Podcast:</h4>
+                  <p className="text-sm">Send thank-you email, request raw video, and CC videographer.</p>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-travel",
+        label: "Travel Management",
+        icon: Plane,
+        sections: [
+          {
+            title: "Travel Planning & Management",
+            content: (
+              <div className="space-y-8">
+                <div className="flex items-center justify-center gap-12 p-6 bg-muted/20 rounded-xl border-dashed border-2">
+                   <div className="text-center">
+                      <p className="text-xs font-bold text-muted-foreground uppercase">Domestic</p>
+                      <p className="text-2xl font-bold">3-4 Weeks</p>
+                   </div>
+                   <div className="h-10 w-px bg-border"></div>
+                   <div className="text-center">
+                      <p className="text-xs font-bold text-muted-foreground uppercase">International</p>
+                      <p className="text-2xl font-bold">6+ Weeks</p>
+                   </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <h4 className="font-bold border-b pb-2">Booking Essentials (Immediate)</h4>
+                    <ul className="text-sm space-y-2">
+                      <li className="flex items-start gap-2"><PlaneTakeoff className="h-4 w-4 mt-0.5 text-primary" /> Block travel dates + day before/after</li>
+                      <li className="flex items-start gap-2"><Shield className="h-4 w-4 mt-0.5 text-primary" /> Create Google Drive "TRIP" file</li>
+                      <li className="flex items-start gap-2"><Calendar className="h-4 w-4 mt-0.5 text-primary" /> Add extended all-day events</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="font-bold border-b pb-2">Trip File must include:</h4>
+                    <ul className="text-sm grid grid-cols-2 gap-2">
+                      <li>Flights / Hotel</li>
+                      <li>Itinerary</li>
+                      <li>Contacts</li>
+                      <li>Documents</li>
+                      <li>Gym options</li>
+                      <li>Reservations</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-red-600/5 border border-red-600/20 rounded-lg">
+                   <h4 className="font-bold text-red-600 mb-2 flex items-center gap-2">
+                      <ShieldCheck className="h-4 w-4" /> Emergency: Delayed or Canceled Flights
+                   </h4>
+                   <p className="text-sm leading-relaxed">
+                     Call airline immediately. Request refund to card (not credit). Cancel hotel/transport. Notify spouse. Update calendar fully.
+                   </p>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-inbox",
+        label: "Inbox Management",
+        icon: Mail,
+        sections: [
+          {
+            title: "Processing CEO Inbox",
+            content: (
+              <div className="space-y-6">
+                <p className="text-lg italic font-medium">Goal: Inbox at zero twice daily. The CEO sees only what requires his attention.</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg bg-card">
+                    <h4 className="font-bold text-primary mb-3">Email Labels</h4>
+                    <div className="flex flex-col gap-1 text-sm">
+                       {["To Respond", "Responded", "To Review", "Waiting On", "Financials", "Investment", "Receipts", "Newsletters", "Archive"].map((l, i) => (
+                         <div key={i} className="px-2 py-1 bg-muted/50 rounded">{l}</div>
+                       ))}
+                    </div>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-card">
+                    <h4 className="font-bold text-primary mb-3">What Goes to "Review"</h4>
+                    <ul className="text-sm space-y-1 list-disc pl-4">
+                      <li>Speaking invites</li>
+                      <li>Investment opportunities</li>
+                      <li>Travel requests</li>
+                      <li>Unclear personal emails</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-card">
+                    <h4 className="font-bold text-primary mb-3">Handle yourself</h4>
+                    <ul className="text-sm space-y-1 list-disc pl-4 text-green-600 dark:text-green-400">
+                      <li>Scheduling</li>
+                      <li>Declining opportunities</li>
+                      <li>Confirmations</li>
+                      <li>Basic replies</li>
+                      <li>Unsubscribing</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-primary/5 border-2 border-dashed border-primary/20 rounded-xl space-y-3">
+                  <h4 className="font-bold text-primary">Response Template</h4>
+                  <p className="text-sm italic p-4 bg-background border rounded-lg">
+                    "This is [Your Name], [CEO]’s assistant. I got to your email before he did and thought you’d appreciate a speedy reply..."
+                  </p>
+                </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-sms-house",
+        label: "SMS & House Coord.",
+        icon: MessageSquare,
+        sections: [
+          {
+            title: "SMS Processing & House Manager",
+            content: (
+              <div className="space-y-8">
+                 <div className="space-y-4">
+                    <h4 className="text-lg font-bold border-l-4 border-primary pl-4">SMS Processing (10 AM & 4 PM)</h4>
+                    <ol className="list-decimal pl-5 space-y-2 text-sm">
+                      <li>Read all messages.</li>
+                      <li>Add tasks to the to-do list.</li>
+                      <li>Respond with action taken & close the loop.</li>
+                    </ol>
+                 </div>
+
+                 <div className="p-6 border rounded-xl bg-muted/10 space-y-4">
+                    <h4 className="font-bold flex items-center gap-2">
+                       <Home className="h-5 w-5 text-primary" /> Coordinating with House Manager
+                    </h4>
+                    <div className="space-y-2 text-sm">
+                      <p>Work with the House Manager to handle:</p>
+                      <ul className="list-disc pl-5">
+                        <li>Deliveries & Returns</li>
+                        <li>Picking up children</li>
+                        <li>House events</li>
+                      </ul>
+                      <p className="mt-4 font-bold text-primary">Pro Tip:</p>
+                      <p className="italic">Add her as “Optional” to home events. Confirm availability outside normal hours 2 weeks ahead.</p>
+                    </div>
+                 </div>
+              </div>
+            )
+          }
+        ]
+      },
+      {
+        id: "ea-purchasing-mindset",
+        label: "Purchasing & Mindset",
+        icon: ShoppingBag,
+        sections: [
+          {
+            title: "Purchasing, Gifting & EA Mindset",
+            content: (
+              <div className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-primary">Large Purchases / Wire</h4>
+                    <p className="text-sm text-muted-foreground">If over a certain amount:</p>
+                    <ul className="list-decimal pl-5 text-sm space-y-1">
+                      <li>Confirm with CEO</li>
+                      <li>Gather banking details</li>
+                      <li>Plan 2-3 days ahead</li>
+                      <li>Confirm completion</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-primary">Gift Checklist</h4>
+                    <ul className="list-disc pl-5 text-sm space-y-1">
+                      <li>Research recipient</li>
+                      <li>Get CEO approval</li>
+                      <li>Purchase & Track shipment</li>
+                      <li>Update CEO</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-primary text-primary-foreground p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                   <div className="relative z-10 space-y-4">
+                      <h4 className="text-2xl font-bold flex items-center gap-2">
+                         <ShieldCheck className="h-6 w-6" /> FINAL EA MINDSET
+                      </h4>
+                      <p className="text-lg opacity-90 leading-relaxed font-medium">You are a filter, a protector of time, a strategist, a systems thinker, and a problem preventer.</p>
+                      <div className="h-px bg-primary-foreground/20 w-full my-4"></div>
+                      <p className="text-xl font-bold italic">"If the CEO never experiences friction, you’re doing your job correctly."</p>
+                   </div>
+                   <Shield className="absolute -bottom-10 -right-10 h-64 w-64 opacity-10" />
+                </div>
+              </div>
+            )
+          }
+        ]
+      }
+    ]
+  }
+];
+
+
+export const docsData: Record<string, DocGroup[]> = {
+  home: homeSections,
+  onboarding: onboardingSections,
+  assistance: assistanceSections,
+};
