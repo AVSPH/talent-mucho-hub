@@ -22,7 +22,7 @@ export default function StaffDashboardPage() {
                 <BookOpen className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold mb-1">AVS Guide</div>
+                <div className="text-2xl font-bold mb-1">TalentMucho Guide</div>
                 <p className="text-xs text-muted-foreground">
                   Read the complete VA expectation and responsibility guide.
                 </p>
