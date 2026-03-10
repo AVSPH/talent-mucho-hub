@@ -93,14 +93,13 @@ export default function DocsPage() {
               </SheetContent>
             </Sheet>
             <div className="flex items-center gap-2 mr-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">
-                  T
-                </span>
+              <div className="relative w-12 h-12">
+                <img
+                  src="/assets/tm-logo.png"
+                  alt="TalentMucho Logo"
+                  className="object-contain"
+                />
               </div>
-              <span className="font-bold tracking-tight hidden sm:block">
-                TalentMucho Docs
-              </span>
             </div>
           </div>
 
