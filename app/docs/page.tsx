@@ -3,39 +3,16 @@
 import React, { useState } from "react";
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
 import { DocsContent } from "@/components/docs/DocsContent";
-import { docsData } from "@/components/docs/data";
+import { DocsSearch } from "@/components/docs/DocsSearch";
+import { docsData, TOP_LINKS } from "@/components/docs/data";
 import { ModeToggle } from "@/components/theme-toggle";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Home, BookOpen, UserCircle } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useCurrentStaff } from "@/hooks/useAuthStaff";
 import { useCurrentAdmin } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
-
-const TOP_LINKS = [
-  {
-    id: "home",
-    label: "Home",
-    icon: Home,
-    title: "Doc Home",
-    desc: "Welcome to TalentMucho Guide",
-  },
-  {
-    id: "onboarding",
-    label: "Onboarding",
-    icon: BookOpen,
-    title: "Onboarding Guide",
-    desc: "VA Expectation & Responsibility",
-  },
-  {
-    id: "assistance",
-    label: "Executive Assistance",
-    icon: UserCircle,
-    title: "Executive Assistance",
-    desc: "EA Patterns & Guidelines",
-  },
-];
 
 export default function DocsPage() {
   const [activeTopLink, setActiveTopLink] = useState("onboarding");
@@ -64,100 +41,117 @@ export default function DocsPage() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleSearchResultSelect = (moduleId: string, categoryId: string) => {
+    setActiveTopLink(moduleId);
+    setActiveCategory(categoryId);
+  };
+
   const isLoading = isLoadingStaff || isLoadingAdmin;
   const isLoggedIn = !!(staffData || adminData);
   const dashboardUrl = adminData ? "/overview" : "/dashboard";
 
   return (
     <div className="flex flex-col h-screen bg-background text-foreground overflow-hidden">
-      {/* Topbar - Full Width */}
-      <header className="flex-none h-14 border-b flex items-center justify-between px-4 lg:px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-30">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] p-0 pt-10">
-                <DocsSidebar
-                  activeCategory={activeCategory}
-                  setActiveCategory={handleCategorySelect}
-                  sections={currentData}
-                  title={currentTopLinkInfo.title}
-                  description={currentTopLinkInfo.desc}
-                  className="border-none w-full"
-                />
-              </SheetContent>
-            </Sheet>
-            <div className="flex items-center gap-2 mr-4">
-              <div className="relative w-12 h-12">
-                <img
-                  src="/assets/tm-logo.png"
-                  alt="TalentMucho Logo"
-                  className="object-contain"
-                />
-              </div>
-            </div>
+      {/* ── TOP NAV BAR ── */}
+      <header className="flex-none h-14 flex items-center z-30 bg-[#0B2D4E] dark:bg-[#060F18] shadow-[0_2px_20px_rgba(11,45,78,0.5)]">
+
+        {/* Brand / Logo Section */}
+        <div className="flex-shrink-0 w-[260px] px-5 flex items-center gap-2.5 border-r border-white/[0.08] h-full">
+          {/* Mobile menu trigger */}
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden text-white/80 hover:text-white hover:bg-white/10 h-8 w-8">
+                <Menu className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[280px] p-0 pt-0 bg-sidebar dark:bg-[#0D1B2A] border-none">
+              <SheetTitle className="sr-only">Directory</SheetTitle>
+              <DocsSidebar
+                activeCategory={activeCategory}
+                setActiveCategory={handleCategorySelect}
+                activeTopLink={activeTopLink}
+                setActiveTopLink={handleTopLinkSelect}
+                sections={currentData}
+                className="border-none w-full"
+              />
+            </SheetContent>
+          </Sheet>
+
+          {/* Logo mark */}
+          <div className="hidden md:flex w-8 h-8 rounded-[9px] bg-gradient-to-br from-[#3B9FD1] to-[#1B6FA8] items-center justify-center flex-shrink-0 shadow-[0_3px_12px_rgba(59,159,209,0.4)]">
+            <img
+              src="/assets/tm-logo.png"
+              alt="TM"
+              className="w-full h-full object-contain rounded-[9px]"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+                (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-white text-[11px] font-black font-serif">TM</span>';
+              }}
+            />
           </div>
 
-          {/* Top Navigation Links - Notion Style */}
-          <nav className="hidden md:flex items-center gap-1 border-l pl-4">
-            {TOP_LINKS.map((link) => {
-              const isActive = activeTopLink === link.id;
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => handleTopLinkSelect(link.id)}
-                  className={cn(
-                    "px-3 py-1 text-sm font-medium transition-all relative h-14 flex items-center",
-                    isActive
-                      ? "text-foreground after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {link.label}
-                </button>
-              );
-            })}
-          </nav>
+          {/* Brand text */}
+          <div className="hidden md:block">
+            <div className="text-[13px] font-bold text-white tracking-[0.03em] leading-tight flex items-center gap-1.5">
+              TalentMucho
+              <span className="px-1.5 py-0.5 rounded bg-white/10 text-[9px] text-[#A8D8F0] tracking-wider font-mono">DOCS</span>
+            </div>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        {/* Search Bar / Center Nav */}
+        <div className="flex-1 flex items-center px-4 max-w-2xl">
+           <DocsSearch onSelectResult={handleSearchResultSelect} />
+        </div>
+
+        {/* Right Side */}
+        <div className="ml-auto flex items-center gap-2.5 px-4 h-full border-l border-white/[0.08]">
           <ModeToggle />
-          {!isLoading &&
-            (isLoggedIn ? (
-              <Button variant="outline" size="sm" asChild>
-                <Link href={dashboardUrl}>Go to Dashboard</Link>
+          {!isLoading && (
+            isLoggedIn ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="text-white/70 hover:text-white hover:bg-white/10 border border-white/[0.12] bg-white/[0.08] rounded-full px-3 py-1 text-[11px] font-mono h-auto"
+              >
+                <Link href={dashboardUrl}>Dashboard</Link>
               </Button>
             ) : (
-              <div className="flex items-center gap-2">
-                <Button size="sm" asChild>
-                  <Link href="/login">Login</Link>
-                </Button>
-              </div>
-            ))}
+              <Button
+                size="sm"
+                asChild
+                className="bg-[#3B9FD1] hover:bg-[#2d8ec0] text-white rounded-full px-4 text-[11px] h-7"
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+            )
+          )}
         </div>
       </header>
 
+      {/* ── BODY ── */}
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar - Desktop */}
-        <aside className="hidden md:flex w-64 flex-col border-r bg-muted/5">
+        <aside className="hidden md:flex w-[260px] flex-shrink-0 flex-col border-r bg-sidebar dark:bg-[#0D1522] shadow-[2px_0_16px_rgba(11,45,78,0.06)] dark:shadow-none overflow-hidden">
           <DocsSidebar
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
+            activeTopLink={activeTopLink}
+            setActiveTopLink={handleTopLinkSelect}
             sections={currentData}
-            title={currentTopLinkInfo.title}
-            description={currentTopLinkInfo.desc}
             className="h-full"
           />
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-hidden relative">
-          <DocsContent activeCategory={activeCategory} sections={currentData} />
+        <main className="flex-1 overflow-hidden relative bg-[#F0F6FB] dark:bg-background">
+          <DocsContent 
+             activeCategory={activeCategory} 
+             setActiveCategory={setActiveCategory} 
+             sections={currentData} 
+             activeTopLinkInfo={currentTopLinkInfo}
+          />
         </main>
       </div>
     </div>
