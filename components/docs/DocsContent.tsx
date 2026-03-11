@@ -35,21 +35,21 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
 
                         {/* Page breadcrumb + title */}
                         <header className="space-y-1">
-                            <div className="flex items-center gap-2 text-xs text-[#5A7A94] dark:text-muted-foreground font-mono uppercase tracking-widest mb-3">
+                            <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono uppercase tracking-widest mb-3">
                                 <span>{activeTopLinkInfo?.title || "Docs"}</span>
                                 <span className="opacity-40">/</span>
                                 <span>{parentSection?.title || "Section"}</span>
                                 <span className="opacity-40">/</span>
-                                <span className="text-[#3B9FD1] dark:text-primary">{category.label}</span>
+                                <span className="text-primary">{category.label}</span>
                             </div>
-                            <div className="text-[24px] font-extrabold text-[#0B2D4E] dark:text-foreground tracking-tight leading-tight">
+                            <div className="text-[24px] font-extrabold text-foreground tracking-tight leading-tight">
                                 {category.label}
                             </div>
-                            <div className="text-[13px] text-[#5A7A94] dark:text-muted-foreground leading-relaxed mt-1">
+                            <div className="text-[13px] text-muted-foreground leading-relaxed mt-1">
                                 Detailed guidelines and operational procedures for {category.label.toLowerCase()}.
                             </div>
                             {/* Divider */}
-                            <div className="pt-3 border-b border-[rgba(59,159,209,0.18)] dark:border-border" />
+                            <div className="pt-3 border-b border-border" />
                         </header>
 
                         {/* Sections */}
@@ -63,10 +63,10 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
                                         className="scroll-mt-24 space-y-5"
                                     >
                                         {/* Section heading */}
-                                        <h2 className="text-[18px] font-bold text-[#0B2D4E] dark:text-foreground flex items-center gap-[9px] leading-snug">
+                                        <h2 className="text-[18px] font-bold text-foreground flex items-center gap-[9px] leading-snug">
                                             {section.title}
                                         </h2>
-                                        <div className="text-[13.5px] leading-[1.75] text-[#0D1B2A] dark:text-foreground/85">
+                                        <div className="text-[13.5px] leading-[1.75] text-foreground/90">
                                             {section.content}
                                         </div>
                                     </section>
@@ -75,17 +75,17 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
                         </div>
 
                         {/* Pagination Buttons */}
-                        <div className="pt-10 mt-10 border-t border-[rgba(59,159,209,0.18)] dark:border-border flex items-center justify-between">
+                        <div className="pt-10 mt-10 border-t border-border flex items-center justify-between">
                             {prevCategory ? (
                                 <button
                                     onClick={() => setActiveCategory(prevCategory.id)}
-                                    className="flex flex-col items-start gap-1 p-4 rounded-xl border hover:border-[#3B9FD1] hover:bg-[#E8F4FD] dark:hover:bg-primary/10 transition-colors text-left group w-[200px]"
+                                    className="flex flex-col items-start gap-1 p-4 rounded-xl border hover:border-border hover:bg-muted/50 transition-colors text-left group w-[200px]"
                                 >
-                                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#5A7A94] dark:text-muted-foreground flex items-center gap-1">
+                                    <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-1">
                                         <ChevronLeft className="h-3 w-3 transition-transform group-hover:-translate-x-1" />
                                         Previous
                                     </span>
-                                    <span className="text-[13px] font-semibold text-[#0B2D4E] dark:text-foreground group-hover:text-[#3B9FD1]">
+                                    <span className="text-[13px] font-semibold text-foreground group-hover:text-primary">
                                         {prevCategory.label}
                                     </span>
                                 </button>
@@ -94,13 +94,13 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
                             {nextCategory ? (
                                 <button
                                     onClick={() => setActiveCategory(nextCategory.id)}
-                                    className="flex flex-col items-end gap-1 p-4 rounded-xl border hover:border-[#3B9FD1] hover:bg-[#E8F4FD] dark:hover:bg-primary/10 transition-colors text-right group w-[200px]"
+                                    className="flex flex-col items-end gap-1 p-4 rounded-xl border hover:border-border hover:bg-muted/50 transition-colors text-right group w-[200px]"
                                 >
-                                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#5A7A94] dark:text-muted-foreground flex items-center gap-1">
+                                    <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-1">
                                         Next
                                         <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                                     </span>
-                                    <span className="text-[13px] font-semibold text-[#0B2D4E] dark:text-foreground group-hover:text-[#3B9FD1]">
+                                    <span className="text-[13px] font-semibold text-foreground group-hover:text-primary">
                                         {nextCategory.label}
                                     </span>
                                 </button>
@@ -112,7 +112,7 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
                     {/* ── Right Sidebar — "On this page" ─────── */}
                     <aside className="hidden lg:block w-56 flex-none sticky top-8 h-fit self-start">
                         <div className="space-y-3">
-                            <h3 className="text-[10px] font-bold tracking-[0.12em] text-[#5A7A94] dark:text-muted-foreground uppercase font-mono">
+                            <h3 className="text-[10px] font-bold tracking-[0.12em] text-muted-foreground uppercase font-mono">
                                 On this page
                             </h3>
                             <nav className="flex flex-col">
@@ -122,7 +122,7 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
                                         <a
                                             key={index}
                                             href={`#${sectionId}`}
-                                            className="text-[12px] text-[#5A7A94] dark:text-muted-foreground hover:text-[#1B6FA8] dark:hover:text-primary transition-colors py-[7px] border-l-[3px] border-transparent hover:border-[rgba(59,159,209,0.4)] pl-[13px] leading-snug"
+                                            className="text-[12px] text-muted-foreground hover:text-primary transition-colors py-[7px] border-l-[3px] border-transparent hover:border-primary/50 pl-[13px] leading-snug"
                                         >
                                             {section.title}
                                         </a>
@@ -131,11 +131,11 @@ export function DocsContent({ activeCategory, setActiveCategory, activeTopLinkIn
                             </nav>
                         </div>
 
-                        <div className="mt-8 p-4 rounded-[12px] bg-[#E8F4FD] dark:bg-primary/5 border border-[rgba(59,159,209,0.18)] dark:border-primary/10 space-y-2">
-                            <h4 className="text-[10px] font-bold text-[#1B6FA8] dark:text-primary uppercase tracking-[0.08em] font-mono">
+                        <div className="mt-8 p-4 rounded-[12px] bg-primary/5 border border-primary/20 space-y-2">
+                            <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.08em] font-mono">
                                 Pro Tip
                             </h4>
-                            <p className="text-[11px] text-[#5A7A94] dark:text-muted-foreground leading-relaxed">
+                            <p className="text-[11px] text-muted-foreground leading-relaxed">
                                 Use the sidebar to navigate between documentation modules.
                             </p>
                         </div>

@@ -41,7 +41,7 @@ export function DocsSidebar({
             <div className="p-4 border-b border-border/40">
                 <DropdownMenu>
                     <DropdownMenuTrigger className="w-full outline-none">
-                        <div className="flex w-full items-center justify-between bg-transparent border border-transparent hover:bg-black/5 dark:hover:bg-white/5 shadow-none px-3 py-2 rounded-lg cursor-pointer group transition-colors">
+                        <div className="flex w-full items-center justify-between bg-transparent border border-transparent hover:bg-muted/50 shadow-none px-3 py-2 rounded-lg cursor-pointer group transition-colors">
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 text-primary">
                                     <CurrentIcon className="w-4 h-4" />
@@ -86,7 +86,7 @@ export function DocsSidebar({
                 <div className="flex flex-col p-3 gap-1">
                     {propSections.map((section, idx) => (
                         <Collapsible key={idx} defaultOpen className="group/collapsible">
-                            <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2 text-left hover:bg-black/5 dark:hover:bg-white/5 rounded-md transition-colors group outline-none">
+                            <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2 text-left hover:bg-muted/50 rounded-md transition-colors group outline-none">
                                 <div className="text-[11px] font-bold text-muted-foreground tracking-[0.08em] uppercase font-mono group-hover:text-foreground transition-colors select-none">
                                     {section.title}
                                 </div>
@@ -104,7 +104,7 @@ export function DocsSidebar({
                                                 "flex items-center gap-3 px-3 py-2 text-[13px] font-medium transition-all duration-200 cursor-pointer w-full text-left rounded-md outline-none",
                                                 isActive
                                                     ? "text-primary bg-primary/10 font-semibold"
-                                                    : "text-muted-foreground bg-transparent hover:text-foreground hover:bg-muted/50 focus-visible:bg-black/5 dark:focus-visible:bg-white/5",
+                                                    : "text-muted-foreground bg-transparent hover:text-foreground hover:bg-muted/50 focus-visible:bg-muted/50",
                                             )}
                                         >
                                             <Icon className={cn(

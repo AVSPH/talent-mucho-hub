@@ -88,20 +88,30 @@ export function DocsSearch({ onSelectResult }: DocsSearchProps) {
 
   return (
     <>
+      {/* Search trigger - Desktop/Tablet */}
       <div 
         className="relative w-full max-w-sm hidden md:block cursor-pointer group"
         onClick={() => setOpen(true)}
       >
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40 group-hover:text-white/70 transition-colors" />
-        <div className="w-full pl-9 h-8 bg-white/5 border border-white/10 text-white/40 group-hover:bg-white/10 group-hover:text-white/70 rounded-full text-xs flex items-center transition-all">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+        <div className="w-full pl-9 h-8 bg-muted/30 border border-border/50 text-muted-foreground group-hover:bg-muted/60 group-hover:text-foreground rounded-full text-xs flex items-center transition-all">
           Search documentation...
         </div>
         <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none hidden lg:flex items-center gap-1">
-          <kbd className="inline-flex h-5 items-center gap-1 rounded border border-white/20 bg-white/10 px-1.5 font-mono text-[10px] font-medium text-white/60">
+          <kbd className="inline-flex h-5 items-center gap-1 rounded border border-border/50 bg-background px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
             <span className="text-xs">⌘</span>K
           </kbd>
         </div>
       </div>
+
+      {/* Search trigger - Mobile */}
+      <button
+        className="md:hidden flex h-8 w-8 items-center justify-center rounded-md text-foreground/80 hover:text-foreground hover:bg-muted transition-colors ml-auto"
+        onClick={() => setOpen(true)}
+        aria-label="Search documentation"
+      >
+        <Search className="h-4 w-4" />
+      </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="p-0 max-w-2xl gap-0 bg-background border-border/40 shadow-2xl [&>button]:hidden">

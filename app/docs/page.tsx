@@ -53,18 +53,18 @@ export default function DocsPage() {
   return (
     <div className="flex flex-col h-screen bg-background text-foreground overflow-hidden">
       {/* ── TOP NAV BAR ── */}
-      <header className="flex-none h-14 flex items-center z-30 bg-[#0B2D4E] dark:bg-[#060F18] shadow-[0_2px_20px_rgba(11,45,78,0.5)]">
+      <header className="flex-none h-14 flex items-center z-30 bg-background border-b border-border shadow-sm">
 
         {/* Brand / Logo Section */}
-        <div className="flex-shrink-0 w-[260px] px-5 flex items-center gap-2.5 border-r border-white/[0.08] h-full">
+        <div className="flex-shrink-0 w-auto md:w-[260px] px-3 md:px-5 flex items-center gap-2.5 md:border-r border-border h-full">
           {/* Mobile menu trigger */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden text-white/80 hover:text-white hover:bg-white/10 h-8 w-8">
+              <Button variant="ghost" size="icon" className="md:hidden text-foreground/80 hover:text-foreground hover:bg-muted h-8 w-8">
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[280px] p-0 pt-0 bg-sidebar dark:bg-[#0D1B2A] border-none">
+            <SheetContent side="left" className="w-[280px] p-0 pt-0 bg-sidebar border-r border-sidebar-border">
               <SheetTitle className="sr-only">Directory</SheetTitle>
               <DocsSidebar
                 activeCategory={activeCategory}
@@ -78,23 +78,23 @@ export default function DocsPage() {
           </Sheet>
 
           {/* Logo mark */}
-          <div className="hidden md:flex w-8 h-8 rounded-[9px] bg-gradient-to-br from-[#3B9FD1] to-[#1B6FA8] items-center justify-center flex-shrink-0 shadow-[0_3px_12px_rgba(59,159,209,0.4)]">
+          <div className="hidden md:flex w-8 h-8 rounded-[9px] bg-primary items-center justify-center flex-shrink-0 shadow-sm">
             <img
               src="/assets/tm-logo.png"
               alt="TM"
               className="w-full h-full object-contain rounded-[9px]"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
-                (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-white text-[11px] font-black font-serif">TM</span>';
+                (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-primary-foreground text-[11px] font-black font-serif">TM</span>';
               }}
             />
           </div>
 
           {/* Brand text */}
           <div className="hidden md:block">
-            <div className="text-[13px] font-bold text-white tracking-[0.03em] leading-tight flex items-center gap-1.5">
+            <div className="text-[13px] font-bold text-foreground tracking-[0.03em] leading-tight flex items-center gap-1.5">
               TalentMucho
-              <span className="px-1.5 py-0.5 rounded bg-white/10 text-[9px] text-[#A8D8F0] tracking-wider font-mono">DOCS</span>
+              <span className="px-1.5 py-0.5 rounded bg-muted text-[9px] text-muted-foreground tracking-wider font-mono border border-border/50">DOCS</span>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function DocsPage() {
         </div>
 
         {/* Right Side */}
-        <div className="ml-auto flex items-center gap-2.5 px-4 h-full border-l border-white/[0.08]">
+        <div className="ml-auto flex items-center gap-2.5 px-4 h-full border-l border-border">
           <ModeToggle />
           {!isLoading && (
             isLoggedIn ? (
@@ -113,7 +113,7 @@ export default function DocsPage() {
                 variant="ghost"
                 size="sm"
                 asChild
-                className="text-white/70 hover:text-white hover:bg-white/10 border border-white/[0.12] bg-white/[0.08] rounded-full px-3 py-1 text-[11px] font-mono h-auto"
+                className="text-foreground/70 hover:text-foreground hover:bg-muted border border-border bg-background rounded-full px-3 py-1 text-[11px] font-mono h-auto"
               >
                 <Link href={dashboardUrl}>Dashboard</Link>
               </Button>
@@ -121,7 +121,7 @@ export default function DocsPage() {
               <Button
                 size="sm"
                 asChild
-                className="bg-[#3B9FD1] hover:bg-[#2d8ec0] text-white rounded-full px-4 text-[11px] h-7"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 text-[11px] h-7"
               >
                 <Link href="/login">Login</Link>
               </Button>
@@ -133,7 +133,7 @@ export default function DocsPage() {
       {/* ── BODY ── */}
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar - Desktop */}
-        <aside className="hidden md:flex w-[260px] flex-shrink-0 flex-col border-r bg-sidebar dark:bg-[#0D1522] shadow-[2px_0_16px_rgba(11,45,78,0.06)] dark:shadow-none overflow-hidden">
+        <aside className="hidden md:flex w-[260px] flex-shrink-0 flex-col border-r border-sidebar-border bg-sidebar overflow-hidden">
           <DocsSidebar
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
@@ -145,7 +145,7 @@ export default function DocsPage() {
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-hidden relative bg-[#F0F6FB] dark:bg-background">
+        <main className="flex-1 overflow-hidden relative bg-background">
           <DocsContent 
              activeCategory={activeCategory} 
              setActiveCategory={setActiveCategory} 
