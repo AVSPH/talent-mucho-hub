@@ -40,9 +40,16 @@ export default function LoginPage() {
       <div className="w-full max-w-sm space-y-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center space-y-2">
-          <div className="h-10 w-10 bg-foreground rounded-lg flex items-center justify-center mb-4 shadow-sm">
-            {/* Placeholder Logo Icon */}
-            <div className="h-4 w-4 bg-background rounded-sm" />
+          <div className="h-20 w-20  flex items-center justify-center mb-4 overflow-hidden">
+            <img 
+              src="/assets/tm-logo.png" 
+              alt="TalentMucho" 
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+                (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-primary-foreground text-sm font-bold">TM</span>';
+              }}
+            />
           </div>
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">
             Welcome back

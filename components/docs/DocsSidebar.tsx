@@ -43,9 +43,7 @@ export function DocsSidebar({
                     <DropdownMenuTrigger className="w-full outline-none">
                         <div className="flex w-full items-center justify-between bg-transparent border border-transparent hover:bg-muted/50 shadow-none px-3 py-2 rounded-lg cursor-pointer group transition-colors">
                             <div className="flex items-center gap-3">
-                                <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 text-primary">
-                                    <CurrentIcon className="w-4 h-4" />
-                                </div>
+
                                 <div className="flex flex-col items-start gap-0">
                                     <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Module</span>
                                     <span className="text-[13px] font-bold text-foreground truncate max-w-[140px] group-hover:text-primary transition-colors">

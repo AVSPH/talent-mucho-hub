@@ -78,7 +78,7 @@ export default function DocsPage() {
           </Sheet>
 
           {/* Logo mark */}
-          <div className="hidden md:flex w-8 h-8 rounded-[9px] bg-primary items-center justify-center flex-shrink-0 shadow-sm">
+          <div className="hidden md:flex w-15 h-15   rounded-[9px] items-center justify-center flex-shrink-0">
             <img
               src="/assets/tm-logo.png"
               alt="TM"
