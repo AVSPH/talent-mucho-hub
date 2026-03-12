@@ -116,11 +116,10 @@ export function DocsSearch({ onSelectResult }: DocsSearchProps) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="p-0 max-w-2xl gap-0 bg-background border-border/40 shadow-2xl [&>button]:hidden">
           <DialogTitle className="sr-only">Search Documentation</DialogTitle>
-          <div className="flex items-center border-b border-border/40 px-3">
-            <Search className="h-5 w-5 text-muted-foreground shrink-0" />
+          <div className="flex items-center border-b border-border/40 ">
             <Input
               placeholder="Search in documentation..."
-              className="h-14 w-full border-0 bg-transparent text-base focus-visible:ring-0 focus-visible:ring-offset-0 px-3 shadow-none"
+              className="h-14 w-full border-0 bg-transparent text-base focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               autoFocus

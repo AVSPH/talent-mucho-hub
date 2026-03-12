@@ -36,7 +36,7 @@ export function DocsSidebar({
     const CurrentIcon = currentTopLinkInfo.icon;
 
     return (
-        <div className={cn("w-full h-full flex-shrink-0 flex flex-col bg-sidebar", className)}>
+        <div className={cn("w-full h-full flex-shrink-0 flex flex-col bg-background", className)}>
             {/* Module Switcher Header */}
             <div className="p-4 border-b border-border/40">
                 <DropdownMenu>

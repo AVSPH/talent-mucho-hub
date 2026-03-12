@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
 import { DocsContent } from "@/components/docs/DocsContent";
 import { DocsSearch } from "@/components/docs/DocsSearch";
@@ -15,13 +16,39 @@ import { useCurrentAdmin } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 
 export default function DocsPage() {
+  return (
+    <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading documentation...</div>}>
+      <DocsInner />
+    </Suspense>
+  );
+}
+
+function DocsInner() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+
   const [activeTopLink, setActiveTopLink] = useState("onboarding");
+
+  useEffect(() => {
+    if (tabParam && docsData[tabParam]) {
+      setActiveTopLink(tabParam);
+    }
+  }, [tabParam]);
+
   const currentData = docsData[activeTopLink] || docsData.onboarding;
 
   const [activeCategory, setActiveCategory] = useState(
     currentData[0].items[0].id,
   );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Re-sync active category when top link changes if necessary
+  useEffect(() => {
+    const newData = docsData[activeTopLink] || docsData.onboarding;
+    if (!newData[0].items.some(item => item.id === activeCategory)) {
+        setActiveCategory(newData[0].items[0].id);
+    }
+  }, [activeTopLink]);
 
   const { data: staffData, isLoading: isLoadingStaff } = useCurrentStaff();
   const { data: adminData, isLoading: isLoadingAdmin } = useCurrentAdmin();

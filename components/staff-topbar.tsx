@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image'
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,6 +19,7 @@ import { ModeToggle } from "@/components/theme-toggle";
 import { useStaffLogout } from "@/hooks/useAuthStaff";
 import { useStaffStore } from "@/store/staff.store";
 import { cn } from "@/lib/utils";
+import { Iansui } from 'next/font/google';
 
 // Staff navigation items
 const navigation = [
@@ -42,9 +44,13 @@ export function StaffTopbar() {
                         href="/staff/dashboard"
                         className="flex items-center gap-2 font-semibold"
                     >
-                        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                            <Clock className="h-4 w-4" />
-                        </div>
+                            <Image
+                                src={"/assets/tm-logo.png"}  
+                                alt="Logo"
+                                width={40}
+                                height={40}
+                                className='rounded-md'
+                            />
                     </Link>
 
                     <span className="text-lg font-medium text-foreground">VA Portal</span>
