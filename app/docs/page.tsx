@@ -11,8 +11,6 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useCurrentStaff } from "@/hooks/useAuthStaff";
-import { useCurrentAdmin } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 
 export default function DocsPage() {
@@ -46,12 +44,10 @@ function DocsInner() {
   useEffect(() => {
     const newData = docsData[activeTopLink] || docsData.onboarding;
     if (!newData[0].items.some(item => item.id === activeCategory)) {
-        setActiveCategory(newData[0].items[0].id);
+      setActiveCategory(newData[0].items[0].id);
     }
   }, [activeTopLink]);
 
-  const { data: staffData, isLoading: isLoadingStaff } = useCurrentStaff();
-  const { data: adminData, isLoading: isLoadingAdmin } = useCurrentAdmin();
 
   const currentTopLinkInfo = TOP_LINKS.find(
     (link) => link.id === activeTopLink,
@@ -73,9 +69,6 @@ function DocsInner() {
     setActiveCategory(categoryId);
   };
 
-  const isLoading = isLoadingStaff || isLoadingAdmin;
-  const isLoggedIn = !!(staffData || adminData);
-  const dashboardUrl = adminData ? "/overview" : "/dashboard";
 
   return (
     <div className="flex flex-col h-screen bg-background text-foreground overflow-hidden">
@@ -128,32 +121,19 @@ function DocsInner() {
 
         {/* Search Bar / Center Nav */}
         <div className="flex-1 flex items-center px-4 max-w-2xl">
-           <DocsSearch onSelectResult={handleSearchResultSelect} />
+          <DocsSearch onSelectResult={handleSearchResultSelect} />
         </div>
 
         {/* Right Side */}
         <div className="ml-auto flex items-center gap-2.5 px-4 h-full border-l border-border">
           <ModeToggle />
-          {!isLoading && (
-            isLoggedIn ? (
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className="text-foreground/70 hover:text-foreground hover:bg-muted border border-border bg-background rounded-full px-3 py-1 text-[11px] font-mono h-auto"
-              >
-                <Link href={dashboardUrl}>Dashboard</Link>
-              </Button>
-            ) : (
-              <Button
-                size="sm"
-                asChild
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 text-[11px] h-7"
-              >
-                <Link href="/login">Login</Link>
-              </Button>
-            )
-          )}
+          <Button
+            size="sm"
+            asChild
+            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 text-[11px] h-7"
+          >
+            <Link href="/login">Login</Link>
+          </Button>
         </div>
       </header>
 
@@ -173,11 +153,11 @@ function DocsInner() {
 
         {/* Main Content Area */}
         <main className="flex-1 overflow-hidden relative bg-background">
-          <DocsContent 
-             activeCategory={activeCategory} 
-             setActiveCategory={setActiveCategory} 
-             sections={currentData} 
-             activeTopLinkInfo={currentTopLinkInfo}
+          <DocsContent
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+            sections={currentData}
+            activeTopLinkInfo={currentTopLinkInfo}
           />
         </main>
       </div>
